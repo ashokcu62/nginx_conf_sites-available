@@ -70,10 +70,11 @@ pm2 start "npm run dev "  --name frontend
 # node express
 pm2 start "npx nodemon@latest server.js "  --name backend
 
+ Applications that are running under PM2 will be restarted automatically if the application crashes or is killed, but an additional step needs to be taken to get the application to launch on system startup (boot or reboot). Luckily, PM2 provides an easy way to do this, the startup subcommand.
 
-# Applications that are running under PM2 will be restarted automatically if the application crashes or is killed, but an additional step needs to be taken to get the application to launch on system startup (boot or reboot). Luckily, PM2 provides an easy way to do this, the startup subcommand.
+The startup subcommand generates and configures a startup script to launch PM2 and its managed processes on server boots:
 
-# The startup subcommand generates and configures a startup script to launch PM2 and its managed processes on server boots:
+
 
 pm2 startup systemd
 
@@ -86,11 +87,11 @@ pm2 stop app_name_or_id
 
 pm2 restart app_name_or_id
 
-# More information about a specific application can be found by using the info subcommand (specify the PM2 App name or id):
+ More information about a specific application can be found by using the info subcommand (specify the PM2 App name or id):
 
 pm2 info example
 
-# The PM2 process monitor can be pulled up with the monit subcommand. This displays the application status, CPU, and memory usage:
+The PM2 process monitor can be pulled up with the monit subcommand. This displays the application status, CPU, and memory usage:
 
 pm2 monit
 
